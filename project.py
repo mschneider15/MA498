@@ -5,6 +5,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import math
+from matplotlib.font_manager import FontProperties
 
 #Hooke's values
 k1 = 5000
@@ -197,12 +198,16 @@ if(p1Flg == 1):
     plt.plot(t4Vec,w10Vec,color="0.9", label='RK4 for equation 10')
     plt.plot()
     plt.xlabel('$t$')
-    plt.ylabel('$y(t)$')
-    plt.title('Approximate solution to $\dot{y}=f1(t,u1,u2)$ and $\dot{y}=f2(t,u1,u2)$')
+    plt.ylabel('$Force(t)$')
+    plt.xlim(xmin=2900) 
+    plt.title('Approximate solution to earthquake equations')
     plt.grid(True)
-    #plt.legend()
+    lgd = plt.legend(loc=9, bbox_to_anchor=(0.5, -0.1))
+    art = []
+    art.append(lgd)
     plt.show
-   # plt.savefig("proj_2_2.png")
+    plt.savefig("proj_2_2.png", additional_artists=art,
+    bbox_inches="tight")
 
 
 print(rk4(1, 0, .2, alpha))
